@@ -22,12 +22,8 @@ class Settings(BaseSettings):
         cors_env = os.getenv("CORS_ORIGINS", "")
         if cors_env:
             return [url.strip() for url in cors_env.split(",")]
-        return [
-            "http://localhost:3000",
-            "http://localhost:5173",
-            "https://nexusai-r77c6i69p-anudeepavs-projects.vercel.app",
-            "https://*.vercel.app",
-        ]
+        # Allow all origins for development/demo
+        return ["*"]
 
     class Config:
         env_file = ".env"
