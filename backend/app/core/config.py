@@ -1,5 +1,6 @@
 """Application configuration loaded from environment variables."""
 
+import os
 from pydantic_settings import BaseSettings
 from typing import List
 
@@ -14,12 +15,19 @@ class Settings(BaseSettings):
     UPLOAD_DIR: str = "./uploads"
     MAX_FILE_SIZE_MB: int = 10
     ALLOWED_EXTENSIONS: List[str] = [".pdf", ".txt", ".csv", ".docx"]
-    CORS_ORIGINS: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "https://nexusai-kta2rvwsp-anudeepavs-projects.vercel.app",
-        "https://nexusai.vercel.app",
-    ]
+
+    @property
+    def CORS_ORIGINS(self) -> List[str]:
+        """Get CORS origins from environment or use defaults."""
+        cors_env = os.getenv("CORS_ORIGINS", "")
+        if cors_env:
+            return [url.strip() for url in cors_env.split(",")]
+        return [
+            "http://localhost:3000",
+            "http://localhost:5173",
+            "https://nexusai-r77c6i69p-anudeepavs-projects.vercel.app",
+            "https://*.vercel.app",
+        ]
 
     class Config:
         env_file = ".env"
