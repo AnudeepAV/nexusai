@@ -1,30 +1,25 @@
+"""Application configuration loaded from environment variables."""
+
 from pydantic_settings import BaseSettings
 from typing import List
 
 
 class Settings(BaseSettings):
-    """Application settings loaded from environment variables."""
-
     APP_NAME: str = "NexusAI"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
-
-    # API Keys
     GEMINI_API_KEY: str
-
-    # Database
     DATABASE_URL: str = "sqlite+aiosqlite:///./nexusai.db"
-
-    # ChromaDB
     CHROMA_PERSIST_DIR: str = "./chroma_data"
-
-    # File uploads
     UPLOAD_DIR: str = "./uploads"
     MAX_FILE_SIZE_MB: int = 10
     ALLOWED_EXTENSIONS: List[str] = [".pdf", ".txt", ".csv", ".docx"]
-
-    # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:5173"]
+    CORS_ORIGINS: List[str] = [
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://nexusai-kta2rvwsp-anudeepavs-projects.vercel.app",
+        "https://nexusai.vercel.app",
+    ]
 
     class Config:
         env_file = ".env"
