@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Upload, FileText, CheckCircle, AlertCircle, Loader2, Zap, Shield, Cpu } from 'lucide-react';
+import { Upload, FileText, CheckCircle, AlertCircle, Loader2, Zap, Shield } from 'lucide-react';
 import { uploadDocument } from '../api/client';
 
 export default function UploadPage() {
