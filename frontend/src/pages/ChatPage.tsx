@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Send, Bot, User, Loader2, FileText, Sparkles, ArrowDown } from 'lucide-react';
+import { Send, Bot, User, FileText, Sparkles, ArrowDown } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { sendMessage, getChatHistory, listDocuments } from '../api/client';
 import type { ChatMessage, Document } from '../types';
