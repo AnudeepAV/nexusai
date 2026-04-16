@@ -107,21 +107,49 @@ git clone https://github.com/AnudeepAV/nexusai.git
 cd nexusai
 ```
 
-**2. Backend Setup:**
+### Backend Setup
+
+**1. Navigate to backend directory:**
 ```bash
 cd backend
+```
+
+**2. Create and activate virtual environment:**
+```bash
 python -m venv venv
+
 # Windows:
 venv\Scripts\activate
+
 # macOS/Linux:
 source venv/bin/activate
-
-pip install -r requirements.txt
-echo "GEMINI_API_KEY=your_api_key_here" > .env
-
-python -m uvicorn app.main:app --reload
-# Open http://localhost:8000/docs for API docs
 ```
+
+**3. Install dependencies:**
+```bash
+pip install -r requirements.txt
+```
+
+**4. Set up environment variables:**
+
+Create a `.env` file in the `backend/` folder:
+```bash
+echo "GEMINI_API_KEY=your_actual_api_key_here" > .env
+```
+
+⚠️ **IMPORTANT:**
+- Get your FREE API key from: [Google AI Studio](https://aistudio.google.com/app/apikey)
+- Replace `your_actual_api_key_here` with your real key
+- **NEVER commit `.env` to GitHub** (it's in `.gitignore`)
+- The `.env` file is only for local development
+
+**5. Start the development server:**
+```bash
+python -m uvicorn app.main:app --reload
+```
+
+ Backend running at: http://localhost:8000
+ API Documentation: http://localhost:8000/docs
 
 **3. Frontend Setup:**
 ```bash
